@@ -2,7 +2,7 @@
 import socket
 
 HOST = ''
-PORT = 50007
+PORT = 50008
 
 with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
     s.bind((HOST,PORT))
