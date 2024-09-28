@@ -10,7 +10,9 @@ def check_send_command(line):
         return True
     return False
 
+
 def send_line_to_server(socket,line):
+
     text_packet = {
         'packet_type':'text',
         'size':len(line),
@@ -54,7 +56,7 @@ with socket.socket(socket.AF_INET,socket.SOCK_STREAM) as s:
                 print("Severus has been closed!")
                 sys.exit()
             if event.type == pygame.KEYDOWN:
-                inputed_char = chr(event.key)
+                inputed_char = event.unicode
                 char_to_be_rendered = font.render(inputed_char,True,COLOR_LETTERS)
                 screen.blit(char_to_be_rendered, (current_char_width_position, current_char_height_position))
                 pygame.display.update()

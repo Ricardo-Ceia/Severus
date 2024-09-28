@@ -12,7 +12,7 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
         print("Connected by ",addr)
         while True:
             data = conn.recv(1024)
-            print(f"Data recived from the client: {data}")
+            print(f"Client Data:{data}")
             conn.sendall(data)
     conn.exit()
 
