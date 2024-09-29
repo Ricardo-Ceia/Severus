@@ -11,12 +11,11 @@ def check_send_command(line):
     return False
 
 
-def send_line_to_server(socket,line):
-
+def send_msg_to_server(socket,msg,msg_type):
     text_packet = {
-        'packet_type':'text',
-        'size':len(line),
-        'text':line
+        'packet_type':msg_type,
+        'size':len(msg),
+        'message':msg
     }
     socket.sendall(bytes(json.dumps(text_packet),encoding = 'utf-8'))
 
@@ -53,6 +52,7 @@ with socket.socket(socket.AF_INET,socket.SOCK_STREAM) as s:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
+                send_msg_to_server(s,"","conn_close")
                 print("Severus has been closed!")
                 sys.exit()
             if event.type == pygame.KEYDOWN:
@@ -62,7 +62,7 @@ with socket.socket(socket.AF_INET,socket.SOCK_STREAM) as s:
                 pygame.display.update()
                 current_char_width_position += NEXT_CHAR_POSITION_WIDTH_OFFSET
                 if check_send_command(line):
-                    send_line_to_server(s,line)
+                    send_msg_to_server(s,line,"text")
                     pygame.draw.rect(screen,COLOR_BOTTOM_BAR,pygame.Rect(0,HEIGHT-15,WIDTH,HEIGHT))
                     pygame.display.update()
                     current_char_width_position = 0
