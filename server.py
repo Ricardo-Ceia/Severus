@@ -27,6 +27,7 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
         conn,addr = s.accept()
         thread = threading.Thread(target=handle_client,args=(conn,addr))
         thread.start()
-        print(f"{threading.active_count()}Active connection ")
+        print(f"{threading.active_count() - 1} Active connection ")
+
 
 

@@ -57,6 +57,7 @@ with socket.socket(socket.AF_INET,socket.SOCK_STREAM) as s:
                 sys.exit()
             if event.type == pygame.KEYDOWN:
                 inputed_char = event.unicode
+                print(f"This is the inputed:char: {inputed_char}")
                 char_to_be_rendered = font.render(inputed_char,True,COLOR_LETTERS)
                 screen.blit(char_to_be_rendered, (current_char_width_position, current_char_height_position))
                 pygame.display.update()
