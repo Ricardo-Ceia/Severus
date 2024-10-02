@@ -1,5 +1,6 @@
-#TODO:
+# TODO:
 - Send messages between clients
+- Change the reciver of the messages to not be hard coded 
 - Render the messages sent by the client to each other
 - Handle the special characters like delete and others that dont have unicode
 - Add a better way to send the messages to the server other than using the "-send" command, use a button or something like that.
